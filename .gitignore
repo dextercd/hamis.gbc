@@ -1,0 +1,5 @@
+*.gb
+*.2bpp
+*.tilemap
+*.o
+sin.inc
