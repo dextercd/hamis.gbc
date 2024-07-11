@@ -1,20 +1,20 @@
 .PHONY: all clean
 
-all: hamis.gb
+all: hamis.gbc
 clean:
-	rm -f *.gb *.2bpp *.tilemap *.o sin.inc *.sym
+	rm -f *.gbc *.2bpp *.tilemap *.o sin.inc *.sym
 
-gb: hamis.gb hamis.sym
+gb: hamis.gbc hamis.sym
 	gearboy $< $<.sym
 
-hamis.gb hamis.sym: hamis.o
+hamis.gbc hamis.sym: hamis.o
 	rgblink --sym $@.sym.tmp -o $@.tmp $^
 	rgbfix \
 	    --validate \
 	    --pad-value 0xff \
 	    --game-id HAMS \
 	    --title "Hämis Boot" \
-	    --color-compatible \
+	    --color-only \
 	    $@.tmp
 	mv $@.tmp $@ && mv $@.sym.tmp $@.sym
 
