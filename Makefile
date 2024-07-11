@@ -2,12 +2,12 @@
 
 all: hamis.gb
 clean:
-	rm -f *.gb *.2bpp *.tilemap *.o sin.inc
+	rm -f *.gb *.2bpp *.tilemap *.o sin.inc *.sym
 
-gb: hamis.gb
+gb: hamis.gb hamis.sym
 	gearboy $< $<.sym
 
-hamis.gb: hamis.o
+hamis.gb hamis.sym: hamis.o
 	rgblink --sym $@.sym.tmp -o $@.tmp $^
 	rgbfix \
 	    --validate \

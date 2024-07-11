@@ -2,4 +2,5 @@
 *.2bpp
 *.tilemap
 *.o
+*.sym
 sin.inc
