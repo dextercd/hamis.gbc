@@ -73,9 +73,8 @@ EntryPoint:
     ld a, $77
     ld [hld], a ; AUDVOL
 
-    ld a, 3 - 60
-    ld [wFrameCounter], a ; Increase this for an initial delay
     xor a
+    ld [wFrameCounter], a
     ld [wFlagAnim], a
 
     ld a, FLAGSTARTY
