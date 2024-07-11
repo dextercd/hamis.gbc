@@ -8,15 +8,15 @@ gb: hamis.gbc hamis.sym
 	gearboy $< $<.sym
 
 hamis.gbc hamis.sym: hamis.o
-	rgblink --sym $@.sym.tmp -o $@.tmp $^
+	rgblink --sym hamis.sym.tmp -o hamis.gbc.tmp $^
 	rgbfix \
 	    --validate \
 	    --pad-value 0xff \
 	    --game-id HAMS \
 	    --title "Hämis Boot" \
 	    --color-only \
-	    $@.tmp
-	mv $@.tmp $@ && mv $@.sym.tmp $@.sym
+	    hamis.gbc.tmp
+	mv hamis.gbc.tmp hamis.gbc && mv hamis.sym.tmp hamis.sym
 
 sin.inc: sin.py
 	python $< >$@
